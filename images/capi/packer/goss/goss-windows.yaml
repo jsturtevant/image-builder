@@ -1,0 +1,16 @@
+command:
+  (kubectl version --short --client=true -o json | ConvertFrom-Json).clientVersion.gitVersion:
+    exit-status: 0
+    stdout: [{{ .Vars.kubernetes_version }}]
+    stderr: []
+    timeout: 0
+  (kubeadm version -o json | ConvertFrom-Json).clientVersion.gitVersion:
+    exit-status: 0
+    stdout: [{{ .Vars.kubernetes_version }}]
+    stderr: []
+    timeout: 0
+  (kubelet --version).Split(" ")[1]:
+    exit-status: 0
+    stdout: [{{ .Vars.kubernetes_version }}]
+    stderr: []
+    timeout: 0
