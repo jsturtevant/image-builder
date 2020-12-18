@@ -1,15 +1,15 @@
 command:
-  (kubectl version --short --client=true -o json | ConvertFrom-Json).clientVersion.gitVersion:
+  kubectl.exe version --short --client=true -o json | powershell -Command "($input | convertfrom-json).clientVersion.gitVersion":
     exit-status: 0
     stdout: [{{ .Vars.kubernetes_version }}]
     stderr: []
     timeout: 0
-  (kubeadm version -o json | ConvertFrom-Json).clientVersion.gitVersion:
+  kubeadm.exe version -o json | powershell -Command "($input | convertfrom-json).clientVersion.gitVersion":
     exit-status: 0
     stdout: [{{ .Vars.kubernetes_version }}]
     stderr: []
     timeout: 0
-  (kubelet --version).Split(" ")[1]:
+  kubelet.exe --version | powershell -command "$input".Split(" ")[1]: 
     exit-status: 0
     stdout: [{{ .Vars.kubernetes_version }}]
     stderr: []

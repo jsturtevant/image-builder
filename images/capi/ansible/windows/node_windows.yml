@@ -23,13 +23,13 @@
       set_fact:
         use_wins: '{{ true if (wins_url is defined) and (wins_url|length > 0) else false }}'
 
-    - include_role:
-        name: systemprep
-    - include_role:
-        name: cloudbase-init
-      when: install_cloudbase_init 
-    - include_role:
-        name: runtimes
+    # - include_role:
+    #     name: systemprep
+    # - include_role:
+    #     name: cloudbase-init
+    #   when: install_cloudbase_init 
+    # - include_role:
+    #     name: runtimes
     - include_role:
         name: kubernetes
     - include_role:

@@ -121,6 +121,34 @@
       "type": "windows-restart"
     },
     {
+      "type": "goss",
+      "arch": "{{user `goss_arch`}}",
+      "targetOs": "Windows", 
+      "format": "{{user `goss_format`}}",
+      "format_options": "{{user `goss_format_options`}}",
+      "goss_file": "{{user `goss_entry_file`}}",
+      "inspect": "{{user `goss_inspect_mode`}}",
+      "tests": ["{{user `goss_tests_dir`}}"],
+      "url": "https://k8swin.blob.core.windows.net/k8s-windows/goss/goss-alpha-windows-amd64.exe",
+      "downloadPath": "/tmp/goss-windows-amd64.exe",
+      "use_sudo": false,
+      "vars_inline": {
+        "OS": "{{user `distribution` | lower}}",
+        "ARCH": "amd64",
+        "PROVIDER": "azure",
+        "kubernetes_source_type": "{{user `kubernetes_source_type`}}",
+        "kubernetes_cni_source_type": "{{user `kubernetes_cni_source_type`}}",
+        "containerd_version" : "{{user `containerd_version`}}",
+        "kubernetes_cni_version": "{{user `kubernetes_cni_semver` | replace \"v\" \"\" 1}}",
+        "kubernetes_version": "{{user `kubernetes_semver`}}"
+      },
+      "vars_file": "{{user `goss_vars_file`}}",
+      "version": "{{user `goss_version`}}",
+      "vars_env": {
+        "GOSS_USE_ALPHA": "1"
+      }
+    },
+    {
       "elevated_user": "packer",
       "elevated_password": "{{.WinRMPassword}}",
       "type": "powershell",

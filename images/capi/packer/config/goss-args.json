@@ -2,7 +2,7 @@
   "goss_arch": "amd64",
   "goss_entry_file": "goss/goss.yaml",
   "goss_format": "json",
-  "goss_inspect_mode": "true",
+  "goss_inspect_mode": "false",
   "goss_tests_dir": "packer/goss",
   "goss_url": "",
   "goss_format_options": "pretty",

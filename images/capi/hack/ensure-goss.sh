@@ -23,7 +23,7 @@ source hack/utils.sh
 # SHA are for amd64 arch.
 _version="2.0.0"
 darwin_sha256="be09a793cb63e898895e9d371eb9015ab2ca7c8b5e929c1d79bafc7e23e871e0"
-linux_sha256="97ed6de22ba8f1f7d9cefa6234e771121c2918563057c44a0615c47de98391e4"
+linux_sha256="d0d01a0c3c326e6567bf260d5ac843ae343d49c2c77265a816ebe82838bd9b2a"
 _bin_url="https://github.com/YaleUniversity/packer-provisioner-goss/releases/download/v${_version}/packer-provisioner-goss-v${_version}-${HOSTOS}-${HOSTARCH}.tar.gz"
 _tarfile="${HOME}/.packer.d/plugins/packer-provisioner-goss.tar.gz"
 _binfile="${HOME}/.packer.d/plugins/packer-provisioner-goss"
