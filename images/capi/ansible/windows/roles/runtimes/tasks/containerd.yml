@@ -96,16 +96,4 @@
     start_mode: auto
     state: started
 
-- name: Pre-pull containerd images
-  win_shell: |
-    #refresh the path to ensure ansible sees update
-    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
-    ctr.exe -n k8s.io images pull {{ item }}
-  loop: "{{ images }}"
-  async: 1800
-  poll: 60
-  retries: 5
-  when: (prepull | bool)
-  vars:
-    images: "{{ prepull_images[distribution_version] | default([]) }}"
   
