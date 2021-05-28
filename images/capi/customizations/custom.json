@@ -1,6 +1,8 @@
 {
     "wins_url": "",
     "prepull": "false",
+    "additional_url_images": "false",
+    "additional_registry_images": "false",
     "additional_registry_images_list": "",
     "runtime": "containerd",
     "additional_executables_list": "https://testgridjs.blob.core.windows.net/containerd/containerd-shim-runhcs-v1.exe",
