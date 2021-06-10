@@ -114,7 +114,8 @@
       "user": "packer"
     },
     {
-      "type": "windows-restart"
+      "type": "windows-restart",
+      "restart_timeout": "15m"
     },
     {
       "arch": "{{user `goss_arch`}}",
