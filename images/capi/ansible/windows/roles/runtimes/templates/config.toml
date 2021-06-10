@@ -14,15 +14,35 @@
 
 root = "{{ allusersprofile }}\\root"
 state = "{{ allusersprofile }}\\state"
+version = 2
 
 [grpc]
   address = "\\\\.\\pipe\\containerd-containerd"
   
 [plugins]
-  [plugins.cri]
+  [plugins."io.containerd.grpc.v1.cri"]
     sandbox_image = "{{ pause_image }}"
-  [plugins.cri.cni]
+    
+    [plugins."io.containerd.grpc.v1.cri".cni]
       bin_dir = "{{ plugin_bin_dir }}"
       conf_dir = "{{ plugin_conf_dir }}"
+    
+    [plugins."io.containerd.grpc.v1.cri".containerd]
+      default_runtime_name = "runhcs-wcow-process"
+      disable_snapshot_annotations = false
+      discard_unpacked_layers = false
+      no_pivot = false
+      snapshotter = "windows"
+
+      [plugins."io.containerd.grpc.v1.cri".containerd.default_runtime]
+        container_annotations = ["microsoft.com/hostprocess-container","microsoft.com/hostprocess-inherit-user" ]
+        pod_annotations = ["microsoft.com/hostprocess-container","microsoft.com/hostprocess-inherit-user"]
+
+      [plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
+
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runhcs-wcow-process]
+          container_annotations = ["microsoft.com/hostprocess-container","microsoft.com/hostprocess-inherit-user" ]
+          pod_annotations = ["microsoft.com/hostprocess-container","microsoft.com/hostprocess-inherit-user"]
+          runtime_type = "io.containerd.runhcs.v1"
 
 {{containerd_additional_settings | b64decode}}
