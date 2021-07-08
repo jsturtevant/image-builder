@@ -16,8 +16,6 @@
   win_get_url:
     url: '{{ containerd_url }}'
     dest: '%TEMP%\containerd.tar.gz'
-    checksum: '{{ containerd_sha256 }}'
-    checksum_algorithm: "sha256"
   register: containerd
 
 - name: Create containerd directory structure
